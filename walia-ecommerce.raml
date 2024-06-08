@@ -1,0 +1,192 @@
+#%RAML 1.0
+title: walia-ecommerce
+version: 1.0.0
+protocols: [HTTP, HTTPS]
+mediaType: [application/json]
+description: This eCommerce API facilitates the interaction between different software applications, enabling them to communicate and exchange data seamlessly. It serves as a bridge between an eCommerce platform and other systems like payment gateways, inventory management, shipping services, and customer relationship management (CRM) tools.
+documentation:
+  - !include documentation.raml
+uses:
+  lib: Library/library.raml
+
+annotationTypes:
+  author:
+    type: string
+    description: The author of the API endpoint.
+  deprecated:
+    type: boolean
+    description: Indicates whether the API endpoint is deprecated.
+
+/register:
+  (author): "Mintesnot Iwunete"
+  (deprecated): false
+  description: Endpoint for user registration.
+  post:
+    body:
+      application/json:
+        example:
+          !include Examples/Authentication/register-request-example.raml
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              !include Examples/Authentication/register-success-response-example.raml
+      409:
+        body:
+          application/json:
+            example:
+              !include Examples/Authentication/register-alreadyexists-response-example.raml
+    is:
+      - lib.servererrortrait
+
+/login:
+  (author): "Mintesnot Iwunete"
+  (deprecated): false
+  description: Endpoint for user login.
+  post:
+    body:
+      application/json:
+        example:
+          !include Examples/Authentication/loginexample.raml
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              !include Examples/Authentication/login-success-response-example.raml
+    is:
+      - lib.servererrortrait
+
+/customers:
+  (author): "Mintesnot Iwunete"
+  (deprecated): false
+  description: Endpoint for managing customers.
+  securedBy:
+   - lib.basicSecurityScheme
+  get:
+    description: Get all customers.
+    responses:
+      200:
+        body:
+          application/json:
+            type: lib.customerdatatype[]
+            example:
+              !include Examples/Customers/customersexample.raml
+    is:
+      - lib.servererrortrait
+      - lib.notfounderrortrait
+  /{customer_id}:
+    description: Endpoint for managing a specific customer.
+    get:
+      description: Get a specific customer.
+      responses:
+        200:
+          body:
+            application/json:
+              type: lib.customerdatatype
+              example:
+                !include Examples/Customers/customerexample.raml
+      is:
+       - lib.servererrortrait
+       - lib.notfounderrortrait
+    patch:
+      description: Update a specific customer.
+      body:
+        application/json:
+          example:
+           !include Examples/Customers/customerexample.raml
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                !include Examples/Customers/updatecustomerexample.raml
+      is:
+       - lib.servererrortrait
+       - lib.notfounderrortrait
+    delete:
+      description: Delete a specific customer.
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                !include Examples/Customers/deletecustomerresponseexample.raml
+      is:
+       - lib.servererrortrait
+       - lib.notfounderrortrait
+
+/products:
+  (author): "WeirdODKnight"
+  (deprecated): false
+  description: Endpoint for managing products.
+  securedBy:
+    - lib.basicSecurityScheme
+  post:
+    description: Add a new product.
+    body:
+      application/json:
+        example:
+          !include Examples/Products/productrequestexample.raml
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              !include Examples/Products/productaddexample.raml
+    is:
+      - lib.servererrortrait
+  get:
+    description: Get all products.
+    responses:
+      200:
+        body:
+          application/json:
+            type: lib.productdatatype[]
+            example:
+              !include Examples/Products/productsexample.raml
+    is:
+       - lib.servererrortrait
+       - lib.notfounderrortrait
+  /{product_id}:
+    description: Endpoint for managing a specific product.
+    get:
+      description: Get a specific product.
+      responses:
+        200:
+          body:
+            application/json:
+              type: lib.productdatatype
+              example:
+                !include Examples/Products/productexample.raml
+      is:
+       - lib.servererrortrait
+       - lib.notfounderrortrait
+    patch:
+      description: Update a specific product.
+      body:
+        application/json:
+          type: lib.productdatatype
+          example:
+           !include Examples/Products/productrequestexample.raml
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                !include Examples/Products/productupdateexample.raml
+      is:
+       - lib.servererrortrait
+       - lib.notfounderrortrait
+    delete:
+      description: Delete a specific product.
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                !include Examples/Products/productdeleteexample.raml
+      is:
+       - lib.servererrortrait
+       - lib.notfounderrortrait

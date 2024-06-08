@@ -1,0 +1,74 @@
+#%RAML 1.0 Overlay
+usage: Translation overlay for amharic language
+extends: walia-ecommerce.raml
+
+title: ዋሊያ ኢኮሞርስ
+version: 1.0.0
+description: ይህ ኢኮሞርስ ኤፒአይ ከተለያዩ ሶፍትዌር መተግበሪያዎች መካከል እንዲያደርጉ በማብቀል እና ውሂብን በቀላሉ እንዲስተላለፉ የሚያገለግላል። እንደ ኢኮሞርስ መድረክ እና ሌሎች ስርዓቶች መካከል ድንበር ሲሆን እንደ ክፍያ መቀበያዎች፣ እንደ ይዘት አስተዳደር እና እንደ ደንበኛ ግንኙነት አስተዳደር (CRM) መሳሪያዎች ውሂብን በቀላሉ እንዲስተላለፉ ይረዳል።
+
+/register:
+  post:
+    description: አዲስ እንቅስቃሴ ለመጀመር የሚያስችል ግምገማ እና መልስ ይቀርባል።
+    responses:
+      201:
+        description: እንቅስቃሴዎ ተሳክቷል።
+      409:
+        description: እንቅስቃሴዎ ተዳዲሷል።
+
+/login:
+  post:
+    description: መግቢያ ውሂብ እና መልስ ይቀርባል።
+    responses:
+      200:
+        description: መግቢያዎ ተሳክቷል።
+
+/customers:
+  get:
+    description: የደንበኞች ዝርዝር እና መልስ ይቀርባል።
+    responses:
+      200:
+        description: የደንበኞች ዝርዝር ተገኝቷል።
+  /{customer_id}:
+    get:
+      description: የተናገረው ደንበኛ መረጃ እና መልስ ይቀርባል።
+      responses:
+        200:
+          description: የተናገረው ደንበኛ መረጃ ተገኝቷል።
+    patch:
+      description: የተናገረው ደንበኛ መረጃ መቀየር እና መልስ ይቀርባል።
+      responses:
+        200:
+          description: የተናገረው ደንበኛ መረጃ ተሳክቷል።
+    delete:
+      description: የተናገረው ደንበኛ መረጃ ማጥፋት እና መልስ ይቀርባል።
+      responses:
+        200:
+          description: የተናገረው ደንበኛ መረጃ ተጥፋል።
+
+/products:
+  post:
+    description: አዲስ ምርት ለመመዝገብ ግምገማ እና መልስ ይቀርባል።
+    responses:
+      201:
+        description: አዲስ ምርት ተመዝግቧል።
+  get:
+    description: የምርቶች ዝርዝር እና መልስ ይቀርባል።
+    responses:
+      200:
+        description: የምርቶች ዝርዝር ተገኝቷል።
+  /{product_id}:
+    get:
+      description: የተናገረው ምርት መረጃ እና መልስ ይቀርባል።
+      responses:
+        200:
+          description: የተናገረው ምርት መረጃ ተገኝቷል።
+    patch:
+      description: የተናገረው ምርት መረጃ መቀየር እና መልስ ይቀርባል።
+      responses:
+        200:
+          description: የተናገረው ምርት መረጃ ተሳክቷል።
+    delete:
+      description: የተናገረው ምርት መረጃ ማጥፋት እና መልስ ይቀርባል።
+      responses:
+        200:
+          description: የተናገረው ምርት መረጃ ተጥፋል።

@@ -1,0 +1,74 @@
+#%RAML 1.0 Overlay
+usage: Translation overlay for Affan Oromo language
+extends: walia-ecommerce.raml
+
+title: walia daldala elektirooniksii
+version: 1.0.0
+description: Kun eCommerce APIn hojiiwwan sofweeri garagaraa giddutti walqunnamtii uumuun, akka waljijjiiran beeksisa, haala salphaan waldubbataniif waljijjiiru godha. Platform eCommerce fi sirna biroo akka yeroo kaffaltii, bittaa qabeenya, tajaajila geejjibaa, fi meeshaalee too’annoo hariiroo qindeessan (CRM) giddutti bu’aa godha.
+    
+/register:
+  post:
+    description: Galmee haaraa jalqabuuf seensa fi deebii dhiyeessa.
+    responses:
+      201:
+        description: Galmeen kee milkaa’eera.
+      409:
+        description: Galmeen kee dursee jira.
+
+/login:
+  post:
+    description: Deebii fi seensa galmee dhiyeessa.
+    responses:
+      200:
+        description: Seensaan kee milkaa’eera.
+
+/customers:
+  get:
+    description: Deebii fi tarree maamilootaa dhiyeessa.
+    responses:
+      200:
+        description: Tarreen maamilootaa argameera.
+  /{customer_id}:
+    get:
+      description: Deebii fi odeeffannoo maamila mataduree kennu dhiyeessa.
+      responses:
+        200:
+          description: Odeeffannoon maamila mataduree argameera.
+    patch:
+      description: Odeeffannoo maamila mataduree fooyyessu fi deebii dhiyeessa.
+      responses:
+        200:
+          description: Fooyyeen odeeffannoo maamila mataduree milkaa’eera.
+    delete:
+      description: Maamila mataduree keessaa haquu fi deebii dhiyeessa.
+      responses:
+        200:
+          description: Maamila mataduree keessaa haquun milkaa’eera.
+
+/products:
+  post:
+    description: Deebii fi galmee proojektii haaraa dhiyeessa.
+    responses:
+      201:
+        description: Proojektii haaraan galmaa’eera.
+  get:
+    description: Deebii fi tarree proojektoota dhiyeessa.
+    responses:
+      200:
+        description: Tarreen proojektootaa argameera.
+  /{product_id}:
+    get:
+      description: Deebii fi odeeffannoo proojektii mataduree dhiyeessa.
+      responses:
+        200:
+          description: Odeeffannoon proojektii mataduree argameera.
+    patch:
+      description: Fooyyee fi odeeffannoo proojektii mataduree dhiyeessa.
+      responses:
+        200:
+          description: Fooyyeen proojektii mataduree milkaa’eera.
+    delete:
+      description: Maqaa proojektii keessaa haquu fi deebii dhiyeessa.
+      responses:
+        200:
+          description: Maqaa proojektii keessaa haquun milkaa’eera.

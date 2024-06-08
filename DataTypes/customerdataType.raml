@@ -1,0 +1,38 @@
+#%RAML 1.0 NamedExample
+type: object
+properties:
+      first_name:
+        type: string
+        required: true
+      last_name:
+        type: string
+        required: true
+      user_name:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+        description: "MD5 hashed password"
+      birth_date:
+        type: date-only
+        required: true
+      phone:
+        type: string
+        required: true
+        pattern: ^\+251\d{9}$
+      email:
+        type: string
+        required: true
+        pattern: ^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$
+      address:
+        type: string
+        required: true
+      role:
+        type: string
+        required: true
+        enum: [user, admin]
+      points:
+        type: integer
+        required: true
+        minimum: 0

@@ -1,0 +1,10 @@
+{
+  "main": "walia-ecommerce.raml",
+  "name": "walia-ecommerce",
+  "groupId": "0803abe7-b1fe-478b-beb1-297c994ca040",
+  "assetId": "walia-ecommerce",
+  "version": "1.0.0",
+  "classifier": "raml",
+  "tags": [],
+  "descriptorVersion": "1.0.0"
+}

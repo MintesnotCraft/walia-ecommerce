@@ -1,0 +1,16 @@
+#%RAML 1.0 Library
+
+annotationTypes:
+  author:
+    type: string
+  deprecated:
+    type: boolean
+
+traits:
+  servererrortrait: !include ../Traits/servererrortrait.raml
+  notfounderrortrait: !include ../Traits/notfoundtrait.raml
+types:
+  customerdatatype: !include ../DataTypes/customerdataType.raml
+  productdatatype: !include ../DataTypes/productdataType.raml 
+securitySchemes:
+  basicSecurityScheme: !include ../Security/basicSecurityScheme.raml
