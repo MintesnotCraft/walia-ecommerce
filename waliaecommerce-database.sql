@@ -85,7 +85,7 @@ CREATE TABLE `order_items` (
 
 
 CREATE TABLE `order_item_notes` (
-  `note_id` INT NOT NULL,
+  `note_id` INT NOT NULL AUTO_INCREMENT,
   `order_id` varchar(255) NOT NULL,
   `product_id` INT NOT NULL,
   `note` VARCHAR(255) NOT NULL,
