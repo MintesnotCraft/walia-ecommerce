@@ -17,6 +17,12 @@ CREATE TABLE `shippers` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`shipper_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `shippers` (`name`) VALUES ('Walia Express');
+INSERT INTO `shippers` (`name`) VALUES ('Craft Express');
+INSERT INTO `shippers` (`name`) VALUES ('UPS');
+INSERT INTO `shippers` (`name`) VALUES ('FedEx');
+INSERT INTO `shippers` (`name`) VALUES ('DHL');
+INSERT INTO `shippers` (`name`) VALUES ('USPS');
 
 
 CREATE TABLE `users` (
@@ -67,10 +73,10 @@ CREATE TABLE `orders` (
 
 
 CREATE TABLE `order_items` (
-  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` varchar(255) NOT NULL ,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `unit_price` decimal(4,2) NOT NULL,
+  `unit_price` double NOT NULL,
   PRIMARY KEY (`order_id`,`product_id`),
   KEY `fk_order_items_products_idx` (`product_id`),
   CONSTRAINT `fk_order_items_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON UPDATE CASCADE,
