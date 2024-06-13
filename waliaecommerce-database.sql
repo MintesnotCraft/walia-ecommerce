@@ -6,7 +6,7 @@ CREATE TABLE `products` (
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `quantity_in_stock` int(11) NOT NULL,
-  `unit_price` decimal(4,2) NOT NULL,
+  `unit_price` double NOT NULL,
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -41,10 +41,15 @@ CREATE TABLE `order_statuses` (
   `order_status` ENUM('Pending','Processed', 'Shipped', 'Delivered') NOT NULL DEFAULT 'Pending',
   PRIMARY KEY (`order_status_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `order_statuses` (`order_status_id`, `order_status`) VALUES (1, 'Pending');
+INSERT INTO `order_statuses` (`order_status_id`, `order_status`) VALUES (2, 'Processed');
+INSERT INTO `order_statuses` (`order_status_id`, `order_status`) VALUES (3, 'Shipped');
+INSERT INTO `order_statuses` (`order_status_id`, `order_status`) VALUES (4, 'Delivered');
+
 
 
 CREATE TABLE `orders` (
-  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
   `order_date` date NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
@@ -75,7 +80,7 @@ CREATE TABLE `order_items` (
 
 CREATE TABLE `order_item_notes` (
   `note_id` INT NOT NULL,
-  `order_Id` INT NOT NULL,
+  `order_id` varchar(255) NOT NULL,
   `product_id` INT NOT NULL,
   `note` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`note_id`));
@@ -85,6 +90,10 @@ CREATE TABLE `payment_methods` (
   `payment_method` ENUM('Credit Card', 'Stripe', 'PayPal', 'Direct Payment') NOT NULL DEFAULT 'Direct Payment',
   PRIMARY KEY (`payment_method_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `payment_methods` (`payment_method`) VALUES ('Credit Card');
+INSERT INTO `payment_methods` (`payment_method`) VALUES ('Stripe');
+INSERT INTO `payment_methods` (`payment_method`) VALUES ('PayPal');
+INSERT INTO `payment_methods` (`payment_method`) VALUES ('Direct Payment');
 
 CREATE TABLE `invoices` (
   `invoice_id` int(11) NOT NULL,
