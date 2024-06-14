@@ -34,3 +34,6 @@ The repository includes examples for request and response payloads for each endp
 ## Documentation
 
 For detailed documentation of the API endpoints, request and response structures, and examples, refer to the included RAML file and the documentation included in the repository.
+
+## Postman Collection
+You can get the postman collection in the repository. [POSTMAN COLLECTION](https://github.com/MintesnotCraft/walia-ecommerce-design/blob/main/Walia-Ecommerce.postman_collection.json).
