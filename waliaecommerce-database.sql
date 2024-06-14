@@ -102,11 +102,11 @@ INSERT INTO `payment_methods` (`payment_method`) VALUES ('PayPal');
 INSERT INTO `payment_methods` (`payment_method`) VALUES ('Direct Payment');
 
 CREATE TABLE `invoices` (
-  `invoice_id` int(11) NOT NULL,
+  `invoice_id` BIGINT NOT NULL,
   `number` varchar(50) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `invoice_total` decimal(9,2) NOT NULL,
-  `payment_total` decimal(9,2) NOT NULL DEFAULT '0.00',
+  `invoice_total` double NOT NULL,
+  `payment_total` double NOT NULL DEFAULT '0.00',
   `invoice_date` date NOT NULL,
   `due_date` date NOT NULL,
   `payment_date` date DEFAULT NULL,
@@ -118,9 +118,9 @@ CREATE TABLE `invoices` (
 CREATE TABLE `payments` (
   `payment_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `invoice_id` int(11) NOT NULL,
+  `invoice_id` BIGINT NOT NULL,
   `date` date NOT NULL,
-  `amount` decimal(9,2) NOT NULL,
+  `amount` double NOT NULL,
   `payment_method` tinyint(4) NOT NULL,
   PRIMARY KEY (`payment_id`),
   KEY `fk_user_id_idx` (`user_id`),
